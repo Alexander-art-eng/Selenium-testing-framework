@@ -18,5 +18,6 @@ def setup():
 def test_form_submission(setup):
     setup.get("https://trytestingthis.netlify.app/")
     setup.find_element(By.ID, "fname").send_keys("Alexander")
+    setup.find_element(By.ID, "lname").send_keys("Tesfay")
     time.sleep(3)
     print("Test Completed")
