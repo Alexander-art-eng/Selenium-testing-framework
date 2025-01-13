@@ -1,12 +1,19 @@
 import time
 import pytest
+from requests import options
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from POM_demo.pages.login_page import LoginPage
 
 @pytest.fixture()
 def driver():
+    options = Options()
+    options.add_argument("--headless")  # Run in headless mode
+    options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in CI
+    options.add_argument("--disable-dev-shm-usage")  # Address shared memory issues in CI
+
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.implicitly_wait(10)
     yield driver
