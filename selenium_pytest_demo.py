@@ -8,16 +8,16 @@ from selenium.webdriver.common.by import By
 
 
 @pytest.fixture()
-def setup():
+def driver():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.implicitly_wait(10)
     yield driver
     driver.close()
     driver.quit()
 
-def test_form_submission(setup):
-    setup.get("https://trytestingthis.netlify.app/")
-    setup.find_element(By.ID, "fname").send_keys("Alexander")
-    setup.find_element(By.ID, "lname").send_keys("Tesfay")
+def test_form_submission(driver):
+    driver.get("https://trytestingthis.netlify.app/")
+    driver.find_element(By.ID, "fname").send_keys("Alexander")
+    driver.find_element(By.ID, "lname").send_keys("Tesfay")
     time.sleep(3)
     print("Test Completed")

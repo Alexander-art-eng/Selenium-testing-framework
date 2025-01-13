@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 
 @pytest.fixture()
-def setup():
+def driver():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.implicitly_wait(10)
     yield driver
@@ -17,11 +17,11 @@ def setup():
     ("test", "test"),
 ])
 
-def test_login(setup, username, password):
-    setup.get("https://trytestingthis.netlify.app/")
-    setup.find_element(By.ID, "uname").send_keys(username)
-    setup.find_element(By.ID, "pwd").send_keys(password)
+def test_login(driver, username, password):
+    driver.get("https://trytestingthis.netlify.app/")
+    driver.find_element(By.ID, "uname").send_keys(username)
+    driver.find_element(By.ID, "pwd").send_keys(password)
     time.sleep(5)
-    setup.find_element(By.XPATH, "//input[@value='Login']").click()
-    assert "Successful" in setup.page_source
+    driver.find_element(By.XPATH, "//input[@value='Login']").click()
+    assert "Successful" in driver.page_source
     time.sleep(3)
