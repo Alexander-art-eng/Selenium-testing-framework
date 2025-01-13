@@ -14,7 +14,7 @@ def driver():
     options.add_argument("--no-sandbox")  # Prevent issues with sandboxing in CI
     options.add_argument("--disable-dev-shm-usage")  # Address shared memory issues in CI
 
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     driver.implicitly_wait(10)
     yield driver
     driver.close()
