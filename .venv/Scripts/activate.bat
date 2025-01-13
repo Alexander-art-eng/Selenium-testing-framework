@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Alexander\PycharmProjects\selinium-testing\.venv
+set VIRTUAL_ENV=D:\e2e_testing_frameworks\selinium_testing_learn\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
