@@ -21,5 +21,5 @@ def test_login(driver):
     login_page.enter_username("test")
     login_page.enter_password("test")
     login_page.click_login()
-    assert "Successful" in setup.page_source
+    assert "Successful" in driver.page_source
     time.sleep(3)
