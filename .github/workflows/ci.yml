@@ -33,4 +33,4 @@ jobs:
 
     - name: Run tests
       # Command to run the test suite
-      run: pytest selenium_pytest_demo.py selenium_pytest_demo2.py tests/login_test.py
+      run: pytest selenium_pytest_demo.py selenium_pytest_demo2.py POM_demo/tests/login_test.py
